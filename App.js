@@ -52,7 +52,7 @@ class App extends Component {
   }
 
   onPressRandom = () => {
-      this.state.warna = 'blue'
+      this.state.warna = 'black'
       this.testRandom()
   }
 
@@ -130,8 +130,13 @@ class App extends Component {
       botRghtButton: this.state.charData[this.state.nilaiI],
     })
   }
-  
+
   render() {
+  
+    function pressButton(huruf) {
+      Alert.alert(`asd, ${huruf}`);
+    }
+
     return (
       <View style={{flex: 1, padding:0}}>
 
@@ -159,31 +164,31 @@ class App extends Component {
 
           <View style={{marginHorizontal: 20}}>
 
-            <Button title={this.state.topLeftButton} onPress={this.onPressTop} color={this.state.warna}/>
+            <Button title={this.state.topLeftButton} color={this.state.warna} onPress={() => pressButton(this.state.topLeftButton)}/>
             <Text>{"\n"}</Text>            
-            <Button title={this.state.midLeftButton} color={this.state.warna}/>
+            <Button title={this.state.midLeftButton} color={this.state.warna} onPress={() => pressButton(this.state.midLeftButton)}/>
             <Text>{"\n"}</Text>
-            <Button title={this.state.botLeftButton} color={this.state.warna}/>
+            <Button title={this.state.botLeftButton} color={this.state.warna} onPress={() => pressButton(this.state.botLeftButton)}/>
 
           </View>    
 
           <View style={{marginHorizontal: 20}}>
 
-            <Button title={this.state.topMiddButton} onPress={this.onPressRandom} color={this.state.warna}/>
+            <Button title={this.state.topMiddButton} color={this.state.warna} onPress={() => pressButton(this.state.topMiddButton)}/>
             <Text>{"\n"}</Text>
-            <Button title={this.state.midMiddButton} color={this.state.warna}/>
+            <Button title={this.state.midMiddButton} color={this.state.warna} onPress={() => pressButton(this.state.midMiddButton)}/>
             <Text>{"\n"}</Text>
-            <Button title={this.state.botMiddButton} color={this.state.warna}/>
+            <Button title={this.state.botMiddButton} color={this.state.warna} onPress={() => pressButton(this.state.botMiddButton)}/>
 
           </View>  
 
           <View style={{marginHorizontal: 20}}>
 
-            <Button title={this.state.topRghtButton} color={this.state.warna}/> 
+            <Button title={this.state.topRghtButton} color={this.state.warna} onPress={() => pressButton(this.state.topRghtButton)}/> 
             <Text>{"\n"}</Text>
-            <Button title={this.state.midRghtButton} color={this.state.warna}/> 
+            <Button title={this.state.midRghtButton} color={this.state.warna} onPress={() => pressButton(this.state.midRghtButton)}/> 
             <Text>{"\n"}</Text>
-            <Button title={this.state.botRghtButton} color={this.state.warna}/>
+            <Button title={this.state.botRghtButton} color={this.state.warna} onPress={() => pressButton(this.state.botRghtButton)}/>
 
           </View>            
 
