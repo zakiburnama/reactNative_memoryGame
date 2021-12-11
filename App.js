@@ -1,90 +1,78 @@
 import React, { Component } from 'react';
 
-import { Button, Text, View, Alert } from 'react-native';
-import { extend } from './node_modules/dayjs/index';
+import {View, Text, Button, Alert} from 'react-native';
 
-export default class HelloWorldApp extends Component {
-    state = {
-        text: 'My Text', random: 5,
-        charData: ['A', 'B', 'C', 'D', 'E'],
-        topFirstChar: 0, topSecondChar: 0,
-        botFirstChar: 0, botSecondChar: 0,
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { 
+    };
+  }
 
-        topButtonText: 'AA',
-        botButtonText: 'AA'
-    }
+  
+  render() {
+    return (
+      <View style={{flex: 1, padding:0}}> 
 
-    onPressTop = () => {
+        {/* AppBar */}
+        <View style={{
+          backgroundColor: 'white', 
+          paddingVertical: 20,
+          elevation: 2,
+          }}>
+          
+          {/* <Text style={{fontSize: 24, textAlign: 'center'}}>hALO</Text> */}
+          <Text style={{fontSize: 24, textAlign: 'center'}}>hALO</Text>
 
-        var topValue = this.state.topFirstChar + this.state.topSecondChar;
-        var botValue = this.state.botFirstChar + this.state.botSecondChar;
+        </View>
 
-        
-        if (topValue > botValue) {
-            this.setState({ text: 'Benar' })
-        }
-        else {
-            this.setState({ text: 'Salah' })
-        }
-        this.testRandom()
-    }
+        {/* BUTTONS */}
+        <View style={{
+          flex: 1, 
+          flexDirection: 'row',
+          backgroundColor: 'white',
+          marginHorizontal: 0,
+          justifyContent: 'center', // kontrol vertikal
+          alignItems: "center",     // kontrol horizontal
+          }}>
 
-    onPressBot = () => {
-        var topValue = this.state.topFirstChar + this.state.topSecondChar;
-        var botValue = this.state.botFirstCHar + this.state.botSecondChar;
-        if (topValue < botValue) {
-            this.setState({ text: 'Benar' })
-        }
-        else {
-            this.setState({ text: 'Salah' })
-        }
-        this.testRandom()
-    }
+          <View style={{marginHorizontal: 20}}>
+
+            <Button title='111' color={'red'}/>
+            <Text>{"\n"}</Text>            
+            <Button title='111' color={'red'}/>
+            <Text>{"\n"}</Text>
+            <Button title='111' color={'red'}/>
+
+          </View>    
+
+          <View style={{marginHorizontal: 20}}>
+
+            <Button title='222' color={'blue'}/>
+            <Text>{"\n"}</Text>
+            <Button title='222' color={'blue'}/>
+            <Text>{"\n"}</Text>
+            <Button title='222' color={'blue'}/>
+
+          </View>  
+
+          <View style={{marginHorizontal: 20}}>
+
+            <Button title='222' color={'green'}/> 
+            <Text>{"\n"}</Text>
+            <Button title='222' color={'green'}/> 
+            <Text>{"\n"}</Text>
+            <Button title='222' color={'green'}/>
+
+          </View>  
+          
+
+        </View>
+
+      </View>
+    );
+  }
+};
 
 
-    testRandom = () => {
-        
-        this.setState({
-            topFirstChar: parseInt(Math.random() * 5, 10),
-            topSecondChar: parseInt(Math.random() * 5, 10),
-
-            botFirstChar: parseInt(Math.random() * 5, 10),
-            botSecondChar: parseInt(Math.random() * 5, 10),
-
-            topButtonText: this.state.charData[this.state.topFirstChar] + this.state.charData[this.state.topSecondChar],
-            botButtonText: this.state.charData[this.state.botFirstChar] + this.state.charData[this.state.botSecondChar]
-            //topButtonText: 'AA',
-            //botButtonText: 'CC'
-
-        })
-    }
-
-    render() {
-        return (
-            <View
-                style={{
-                    flex: 1,
-                    justifyContent: "center",
-                    alignItems: "center"
-                }}>
-                <Text> {this.state.text} </Text>
-                <Button
-                    onPress={this.onPressTop}
-
-                    title={this.state.topButtonText}
-                    color="#AABBAA"
-                />
-
-                <Text>{"\n"}</Text>
-
-                <Button
-                    onPress={this.onPressBot}
-
-                    title={this.state.botButtonText}
-                    color="#AABBAA"
-                />
-
-            </View>
-        )
-    }
-}
+export default App;
