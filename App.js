@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
-import {View, Text, Button, Alert} from 'react-native';
+import {View, Text, Button, Alert, ToastAndroid} from 'react-native';
+import { isDisabled } from 'react-native/Libraries/LogBox/Data/LogBoxData';
 
 class App extends Component {
   constructor(props) {
@@ -14,6 +15,7 @@ class App extends Component {
       botFirstChar: 0, botSecondChar: 0,
 
       warna: 'red',
+      // flag: 0,
 
       nilaiA: 0, nilaiB: 0, nilaiC: 0, nilaiD: 0, nilaiE: 0,
       nilaiF: 0, nilaiG: 0, nilaiH: 0, nilaiI: 0,
@@ -34,22 +36,6 @@ class App extends Component {
       botRghtButton: 'BB',
     };
   }
-  
-  onPressTop = () => {
-
-      // var topValue = this.state.topFirstChar + this.state.topSecondChar;
-      // var botValue = this.state.botFirstChar + this.state.botSecondChar;
-
-      
-      // if (topValue >= botValue) {
-      //     this.setState({ text: 'Benar' })
-      // }
-      // else {
-      //     this.setState({ text: 'Salah' })
-      // }//
-      this.testRandom()
-
-  }
 
   onPressRandom = () => {
       this.state.warna = 'black'
@@ -61,19 +47,16 @@ class App extends Component {
       this.testStart()
   }
 
-  
-
   testRandom = () => {
 
     const array = [0, 0, 1, 1, 2, 2, 3, 3, 4];
     
     let currentIndex = array.length,  randomIndex;
 
+    // acak array
     while (currentIndex != 0) {
-      // Pick a remaining element...
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex--;
-      // And swap it with the current element.
       [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
     }
         
@@ -132,9 +115,36 @@ class App extends Component {
   }
 
   render() {
-  
-    function pressButton(huruf) {
-      Alert.alert(`asd, ${huruf}`);
+
+    var flag = 0; var temp = ''; var poin = 0;
+    
+    function pressButton(huruf) {      
+
+      if (flag == 1) {
+        if (temp == huruf) {
+          // Alert.alert(`asd, ${huruf}`);
+          flag = 0; temp = ''; poin++;
+          ToastAndroid.showWithGravityAndOffset(`BENAR`, ToastAndroid.SHORT, ToastAndroid.BOTTOM, 25, 50);
+          
+          if (poin>3) {
+            // Alert.alert(`YAY`);
+            poin = 0;
+            // this.testRandom();
+            ToastAndroid.showWithGravityAndOffset(`SELAMAT BENAR SEMUA ,${poin}`, ToastAndroid.LONG, ToastAndroid.BOTTOM, 25, 50);
+          }
+        }
+        else {
+          Alert.alert('SALAH');
+          flag = 0; temp = ''; poin = 0; 
+          // this.onPressRandom();
+          // ToastAndroid.showWithGravityAndOffset("SALAH", ToastAndroid.SHORT, ToastAndroid.BOTTOM, 25, 50);
+        }
+      }
+      else {
+        temp = huruf;
+        flag++;
+      }
+
     }
 
     return (
@@ -197,8 +207,6 @@ class App extends Component {
         <Button title='soal' onPress={this.onPressRandom}/>
         <Text>{"\n"}</Text>
         <Button title='start' onPress={this.onPressStart}/>
-
-
 
       </View>
     );
