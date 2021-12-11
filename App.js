@@ -1,16 +1,9 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
 import React from 'react';
 import type {Node} from 'react';
 import {
+  Alert,
+  Button,
   SafeAreaView,
-  ScrollView,
   StatusBar,
   StyleSheet,
   Text,
@@ -20,92 +13,119 @@ import {
 
 import {
   Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-const Section = ({children, title}): Node => {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-};
+const Separator = () => (
+  <View style={styles.separator} />
+);
 
 const App: () => Node = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.js</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
+    <SafeAreaView style={styles.containerAll}>
+      <StatusBar barStyle="dark-content"/>
+      <View style={styles.titleFooterCont}>
+        <Text style={styles.titleStyle}>
+          Simple Matching Game
+        </Text>
+      </View>
+      <Separator/>
+      <View style={styles.fixToText}>
+        <Button 
+          color='#1261A0'
+          title="1 button"
+          onPress={() => Alert.alert('1 button pressed')}
+        />
+        <Button
+          color='#1261A0'
+          title="2 button"
+          onPress={() => Alert.alert('2 button pressed')}
+        />
+        <Button
+          color='#1261A0'
+          title="3 button"
+          onPress={() => Alert.alert('3 button pressed')}
+        />
+      </View>
+      <View style={styles.fixToText}>
+        <Button 
+          color='#1261A0'
+          title="4 button"
+          onPress={() => Alert.alert('4 button pressed')}
+        />
+        <Button
+          color='#1261A0'
+          title="5 button"
+          onPress={() => Alert.alert('5 button pressed')}
+        />
+        <Button
+          color='#1261A0'
+          title="6 button"
+          onPress={() => Alert.alert('6 button pressed')}
+        />
+      </View>
+      <View style={styles.fixToText}>
+        <Button
+          color='#1261A0'
+          title="7 button"
+          onPress={() => Alert.alert('7 button pressed')}
+        />
+        <Button
+          color='#1261A0'
+          title="8 button"
+          onPress={() => Alert.alert('8 button pressed')}
+        />
+        <Button
+          color='#1261A0'
+          title="9 button"
+          onPress={() => Alert.alert('9 button pressed')}
+        />
+      </View>
+      <View style={styles.fixToText}>
+        <Button
+          color='#072F5F'
+          title="Go Start button"
+          onPress={() => Alert.alert('Go Start button pressed')}
+        />
+      </View>
+      <Separator/>
+      <View style={styles.titleFooterCont}>
+        <Text style={styles.footerStyle}>
+          Tugas 5 MPR - Kelompok Delta 
+        </Text>
+      </View>
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  containerAll: {
+    justifyContent: 'space-evenly', 
+    flex:1,
+    backgroundColor: '#58CCED',
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
+  fixToText: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    marginTop: 20,
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
+  titleFooterCont: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
   },
-  highlight: {
-    fontWeight: '700',
+  titleStyle: {
+    color: '#001540',
+    fontSize: 35,
+    fontFamily: 'sans-serif-medium',
+  },
+  footerStyle: {
+    color: '#001540',
+    fontSize: 15,
+    fontFamily: 'sans-serif-condensed',
+  },
+  separator: {
+    borderWidth: 3,
+    borderBottomColor: '#737373',
+    borderBottomWidth: StyleSheet.hairlineWidth,
   },
 });
 
