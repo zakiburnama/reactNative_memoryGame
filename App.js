@@ -13,6 +13,8 @@ class App extends Component {
       topFirstChar: 0, topSecondChar: 0,
       botFirstChar: 0, botSecondChar: 0,
 
+      warna: 'red',
+
       nilaiA: 0, nilaiB: 0, nilaiC: 0, nilaiD: 0, nilaiE: 0,
       nilaiF: 0, nilaiG: 0, nilaiH: 0, nilaiI: 0,
 
@@ -50,7 +52,13 @@ class App extends Component {
   }
 
   onPressRandom = () => {
+      this.state.warna = 'blue'
       this.testRandom()
+  }
+
+  onPressStart = () => {
+      this.state.warna = 'white'
+      this.testStart()
   }
 
   
@@ -68,26 +76,7 @@ class App extends Component {
       // And swap it with the current element.
       [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
     }
-  
-
-    // function shuffleArray(array) {
-    //   for (let i = array.length - 1; i > 0; i--) {
-    //     const j = Math.floor(Math.random() * (i + 1));
-    //     [array[i], array[j]] = [array[j], array[i]];
-    //   }
-    // }
-    
-    // shuffleArray(arrlist);
-    this.state.nilaiA = array[0];
-    this.state.nilaiB = array[1];
-    this.state.nilaiC = array[2];
-    this.state.nilaiD = array[3];
-    this.state.nilaiE = array[4];
-    this.state.nilaiF = array[5];
-    this.state.nilaiG = array[6];
-    this.state.nilaiH = array[7];
-    this.state.nilaiI = array[8];
-      
+        
     this.setState({
       // topFirstChar: parseInt(Math.random() * 5, 10),
       // topSecondChar: parseInt(Math.random() * 5, 10),
@@ -100,16 +89,16 @@ class App extends Component {
       
       //topButtonText: 'AA',
       //botButtonText: 'CC',
-
-      // nilaiA: parseInt(Math.random() * 5),
-      // nilaiB: parseInt(Math.random() * 5),
-      // nilaiC: parseInt(Math.random() * 5),
-
-      // nilaiA: array.pop(),
-      // nilaiB: array.pop(),
-      // nilaiC: array.pop(),
-      // nilaiD: array.pop(),
-      // nilaiE: array.pop(),
+      
+      nilaiA: array[0],
+      nilaiB: array[1],
+      nilaiC: array[2],
+      nilaiD: array[3],
+      nilaiE: array[4],
+      nilaiF: array[5],
+      nilaiG: array[6],
+      nilaiH: array[7],
+      nilaiI: array[8],
       
       topLeftButton: this.state.charData[this.state.nilaiA],
       midLeftButton: this.state.charData[this.state.nilaiB],
@@ -124,6 +113,22 @@ class App extends Component {
       botRghtButton: this.state.charData[this.state.nilaiI],
     })
     
+  }
+
+  testStart = () => {      
+    this.setState({      
+      topLeftButton: this.state.charData[this.state.nilaiA],
+      midLeftButton: this.state.charData[this.state.nilaiB],
+      botLeftButton: this.state.charData[this.state.nilaiC],
+
+      topMiddButton: this.state.charData[this.state.nilaiD],
+      midMiddButton: this.state.charData[this.state.nilaiE],
+      botMiddButton: this.state.charData[this.state.nilaiF],
+
+      topRghtButton: this.state.charData[this.state.nilaiG],
+      midRghtButton: this.state.charData[this.state.nilaiH],
+      botRghtButton: this.state.charData[this.state.nilaiI],
+    })
   }
   
   render() {
@@ -154,36 +159,39 @@ class App extends Component {
 
           <View style={{marginHorizontal: 20}}>
 
-            <Button title={this.state.topLeftButton} onPress={this.onPressTop} color={'red'}/>
+            <Button title={this.state.topLeftButton} onPress={this.onPressTop} color={this.state.warna}/>
             <Text>{"\n"}</Text>            
-            <Button title={this.state.midLeftButton} color={'red'}/>
+            <Button title={this.state.midLeftButton} color={this.state.warna}/>
             <Text>{"\n"}</Text>
-            <Button title={this.state.botLeftButton} color={'red'}/>
+            <Button title={this.state.botLeftButton} color={this.state.warna}/>
 
           </View>    
 
           <View style={{marginHorizontal: 20}}>
 
-            <Button title={this.state.topMiddButton} onPress={this.onPressRandom} color={'blue'}/>
+            <Button title={this.state.topMiddButton} onPress={this.onPressRandom} color={this.state.warna}/>
             <Text>{"\n"}</Text>
-            <Button title={this.state.midMiddButton} color={'blue'}/>
+            <Button title={this.state.midMiddButton} color={this.state.warna}/>
             <Text>{"\n"}</Text>
-            <Button title={this.state.botMiddButton} color={'blue'}/>
+            <Button title={this.state.botMiddButton} color={this.state.warna}/>
 
           </View>  
 
           <View style={{marginHorizontal: 20}}>
 
-            <Button title={this.state.topRghtButton} color={'green'}/> 
+            <Button title={this.state.topRghtButton} color={this.state.warna}/> 
             <Text>{"\n"}</Text>
-            <Button title={this.state.midRghtButton} color={'green'}/> 
+            <Button title={this.state.midRghtButton} color={this.state.warna}/> 
             <Text>{"\n"}</Text>
-            <Button title={this.state.botRghtButton} color={'green'}/>
+            <Button title={this.state.botRghtButton} color={this.state.warna}/>
 
           </View>            
 
         </View> 
+        
         <Button title='soal' onPress={this.onPressRandom}/>
+        <Text>{"\n"}</Text>
+        <Button title='start' onPress={this.onPressStart}/>
 
 
 
